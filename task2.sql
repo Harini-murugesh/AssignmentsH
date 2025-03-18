@@ -43,11 +43,14 @@ VALUES
 (109, 9, 3, 6, 10800, '2025-03-18'),
 (110, 10, 5, 4, 14000, '2025-03-19');
  
-
+--2
 SELECT * FROM Event;
+--3
 SELECT * FROM Event WHERE available_seats > 0;
+--4
 SELECT * FROM Event WHERE event_name LIKE '%cup%';
-SELECT * FROM Event WHERE ticket_price BETWEEN 1000 AND 2500;
+--5
+SELECT * FROM Event WHERE ticket_price >= 1000 AND ticket_price <= 2500;
 
 SELECT * FROM Event WHERE event_date BETWEEN '2025-06-01' AND '2025-09-30';
 
