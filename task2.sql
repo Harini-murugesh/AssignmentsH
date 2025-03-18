@@ -1,30 +1,34 @@
 USE TicketBookingSystem;
 GO
 -- Insert into Event table
-INSERT INTO Event (event_name, event_date, event_time, venue_id, total_seats, available_seats, ticket_price, event_type) VALUES
-('Rock Concert', '2025-04-15', '18:30:00', 2, 5000, 2000, 1500, 'Concert'),
-('Football Cup Final', '2025-05-10', '20:00:00', 1, 30000, 5000, 2000, 'Sports'),
-('Movie Premiere', '2025-06-05', '19:00:00', 5, 250, 100, 800, 'Movie'),
-('Jazz Night', '2025-07-21', '21:00:00', 2, 2000, 500, 1200, 'Concert'),
-('Theater Drama', '2025-08-10', '18:00:00', 3, 500, 200, 900, 'Concert'),
-('Basketball Finals', '2025-09-12', '19:30:00', 1, 20000, 7000, 2500, 'Sports'),
-('Opera Night', '2025-10-25', '20:00:00', 4, 1200, 600, 3000, 'Concert'),
-('Comedy Show', '2025-11-18', '17:30:00', 6, 1500, 700, 1100, 'Concert'),
-('Boxing Championship', '2025-12-05', '21:30:00', 7, 10000, 2000, 1800, 'Sports'),
-('World Cup Final', '2026-01-22', '19:45:00', 1, 50000, 10000, 3500, 'Sports');
+INSERT INTO Event (event_name, event_date, event_time, venue_id, total_seats, available_seats, ticket_price, event_type, booking_id) 
+VALUES
+('Rock Concert', '2025-04-15', '18:30:00', 2, 5000, 2000, 1500, 'Concert', 101),
+('Football Cup Final', '2025-05-10', '20:00:00', 1, 30000, 5000, 2000, 'Sports', 102),
+('Movie Premiere', '2025-06-05', '19:00:00', 5, 250, 100, 800, 'Movie', 103),
+('Jazz Night', '2025-07-21', '21:00:00', 2, 2000, 500, 1200, 'Concert', 104),
+('Theater Drama', '2025-08-10', '18:00:00', 3, 500, 200, 900, 'Concert', 105),
+('Basketball Finals', '2025-09-12', '19:30:00', 1, 20000, 7000, 2500, 'Sports', 106),
+('Opera Night', '2025-10-25', '20:00:00', 4, 1200, 600, 3000, 'Concert', 107),
+('Comedy Show', '2025-11-18', '17:30:00', 6, 1500, 700, 1100, 'Concert', 108),
+('Boxing Championship', '2025-12-05', '21:30:00', 7, 10000, 2000, 1800, 'Sports', 109),
+('World Cup Final', '2026-01-22', '19:45:00', 1, 50000, 10000, 3500, 'Sports', 110);
+
 
 -- Insert into Customer table
-INSERT INTO Customer (customer_name, email, phone_number) VALUES
-('Anand', 'anand@example.com', '987654000'),
-('Bala', 'bala@example.com', '9123456789'),
-('Chandra', 'chandra@example.com', '9234567890'),
-('Devi', 'devi@example.com', '9345678901'),
-('Eswar', 'eswar@example.com', '9456789012'),
-('Kumar', 'kumar@example.com', '9567890123'),
-('Lakshmi', 'lakshmi@example.com', '9678901234'),
-('Murali', 'murali@example.com', '9789012345'),
-('Nandhini', 'nandhini@example.com', '9890123456'),
-('Priya', 'priya@example.com', '9901234567');
+INSERT INTO Customer (customer_name, email, phone_number, booking_id) 
+VALUES
+('Anand', 'anand@example.com', '987654000', 101),
+('Bala', 'bala@example.com', '9123456789', 102),
+('Chandra', 'chandra@example.com', '9234567890', 103),
+('Devi', 'devi@example.com', '9345678901', 104),
+('Eswar', 'eswar@example.com', '9456789012', 105),
+('Kumar', 'kumar@example.com', '9567890123', 106),
+('Lakshmi', 'lakshmi@example.com', '9678901234', 107),
+('Murali', 'murali@example.com', '9789012345', 108),
+('Nandhini', 'nandhini@example.com', '9890123456', 109),
+('Priya', 'priya@example.com', '9901234567', 110);
+
 
 SELECT * FROM Event;
 INSERT INTO Booking (customer_id, event_id, num_tickets, total_cost, booking_date) VALUES
