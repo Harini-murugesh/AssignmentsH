@@ -51,25 +51,22 @@ SELECT * FROM Event WHERE available_seats > 0;
 SELECT * FROM Event WHERE event_name LIKE '%cup%';
 --5
 SELECT * FROM Event WHERE ticket_price >= 1000 AND ticket_price <= 2500;
-
+--6
 SELECT * FROM Event WHERE event_date BETWEEN '2025-06-01' AND '2025-09-30';
-
+--7
 SELECT * FROM Event 
 WHERE available_seats > 0 
 AND event_name LIKE '%Concert%';
-
-SELECT * FROM Customer 
-ORDER BY customer_id 
-OFFSET 5 ROWS 
-FETCH NEXT 5 ROWS ONLY;
+--8
 
 
+--9
 SELECT * FROM Booking WHERE num_tickets > 4;
-
+--10
 SELECT * FROM Customer WHERE phone_number LIKE '%000';
-
+--11
 SELECT * FROM Event WHERE total_seats > 15000 ORDER BY total_seats DESC;
-
+--12
 SELECT * FROM Event WHERE event_name NOT LIKE 'X%' 
 AND event_name NOT LIKE 'Y%' 
 AND event_name NOT LIKE 'Z%';
