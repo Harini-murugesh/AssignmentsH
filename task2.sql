@@ -1,17 +1,5 @@
 USE TicketBookingSystem;
 GO
-ALTER TABLE Event NOCHECK CONSTRAINT ALL;
-UPDATE Venue SET venue_id = 1 WHERE venue_id = 10;
-UPDATE Venue SET venue_id = 2 WHERE venue_id = 20;
-UPDATE Venue SET venue_id = 3 WHERE venue_id = 30;
-UPDATE Venue SET venue_id = 4 WHERE venue_id = 40;
-UPDATE Venue SET venue_id = 5 WHERE venue_id = 50;
-UPDATE Venue SET venue_id = 6 WHERE venue_id = 60;
-UPDATE Venue SET venue_id = 7 WHERE venue_id = 70;
-UPDATE Venue SET venue_id = 8 WHERE venue_id = 80;
-UPDATE Venue SET venue_id = 9 WHERE venue_id = 90;
-UPDATE Venue SET venue_id = 10 WHERE venue_id = 100;
-
 -- Insert into Event table
 INSERT INTO Event (event_name, event_date, event_time, venue_id, total_seats, available_seats, ticket_price, event_type) VALUES
 ('Rock Concert', '2025-04-15', '18:30:00', 2, 5000, 2000, 1500, 'Concert'),
