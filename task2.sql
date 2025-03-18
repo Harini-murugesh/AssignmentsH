@@ -14,7 +14,6 @@ INSERT INTO Event (event_name, event_date, event_time, venue_id, total_seats, av
 ('World Cup Final', '2026-01-22', '19:45:00', 1, 50000, 10000, 3500, 'Sports');
 
 -- Insert into Customer table
--- Insert into Customer table with Tamil names
 INSERT INTO Customer (customer_name, email, phone_number) VALUES
 ('Anand', 'anand@example.com', '987654000'),
 ('Bala', 'bala@example.com', '9123456789'),
