@@ -18,8 +18,7 @@ CREATE TABLE Event (
     total_seats INT NOT NULL,
     available_seats INT NOT NULL,
     ticket_price DECIMAL(10,2) NOT NULL,
-    event_type NVARCHAR(30) NOT NULL CHECK (event_type IN ('Movie', 'Sports', 'Concert')),
-    booking_id INT REFERENCES Booking(booking_id) 
+    event_type NVARCHAR(30) NOT NULL CHECK (event_type IN ('Movie', 'Sports', 'Concert')),    
 );
 
 -- Create Customer Table
@@ -28,7 +27,6 @@ CREATE TABLE Customer (
     customer_name NVARCHAR(30) NOT NULL,
     email nVARCHAR(30) NOT NULL,
     phone_number VARCHAR(20) NOT NULL,
-booking_id INT REFERENCES Booking(booking_id)
 );
 
 -- Create Booking Table
