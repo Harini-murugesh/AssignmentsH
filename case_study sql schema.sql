@@ -1,3 +1,4 @@
+--CarRentalSysytem
 -- Create the Vehicle table
 CREATE TABLE Vehicle (
     vehicleID INT PRIMARY KEY IDENTITY(1,1),
