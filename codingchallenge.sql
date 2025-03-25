@@ -201,7 +201,7 @@ SELECT *
 FROM Lease L
 JOIN Customer C ON L.customerID = C.customerID
 JOIN Vehicle V ON L.vehicleID = V.vehicleID
-WHERE L.endDate >= CAST(GETDATE() AS DATE) 
+WHERE L.endDate >= GETDATE()
 ORDER BY L.startDate;
 
 --Q17
