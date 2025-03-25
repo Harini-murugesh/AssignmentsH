@@ -234,8 +234,6 @@ LEFT JOIN Customer C ON L.customerID = C.customerID;
 
 
 
-select * from Payment
-
 
 
 
