@@ -1,0 +1,513 @@
+// Program 1: Check if two numbers are equal
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Input 1st number: ");
+        int num1 = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Input 2nd number: ");
+        int num2 = Convert.ToInt32(Console.ReadLine());
+
+        if (num1 == num2)
+            Console.WriteLine($"{num1} and {num2} are equal");
+        else
+            Console.WriteLine($"{num1} and {num2} are not equal");
+    }
+}
+// Program 2: Check if a number is positive or negative
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter a number: ");
+        int num = Convert.ToInt32(Console.ReadLine());
+
+        if (num >= 0)
+            Console.WriteLine($"{num} is a positive number");
+        else
+            Console.WriteLine($"{num} is a negative number");
+    }
+}
+// Program 3: Perform +, -, *, / on two numbers
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Input first number: ");
+        double num1 = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Input operation (+, -, *, /): ");
+        char op = Convert.ToChar(Console.ReadLine());
+
+        Console.Write("Input second number: ");
+        double num2 = Convert.ToDouble(Console.ReadLine());
+
+        double result;
+
+        switch (op)
+        {
+            case '+':
+                result = num1 + num2;
+                Console.WriteLine($"{num1} + {num2} = {result}");
+                break;
+            case '-':
+                result = num1 - num2;
+                Console.WriteLine($"{num1} - {num2} = {result}");
+                break;
+            case '*':
+                result = num1 * num2;
+                Console.WriteLine($"{num1} * {num2} = {result}");
+                break;
+            case '/':
+                if (num2 != 0)
+                {
+                    result = num1 / num2;
+                    Console.WriteLine($"{num1} / {num2} = {result}");
+                }
+                else
+                {
+                    Console.WriteLine("Division by zero is not allowed.");
+                }
+                break;
+            default:
+                Console.WriteLine("Invalid operation.");
+                break;
+        }
+    }
+}
+// Program 4: Print multiplication table of a number
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter the number: ");
+        int number = Convert.ToInt32(Console.ReadLine());
+
+        for (int i = 0; i <= 10; i++)
+        {
+            Console.WriteLine($"{number} * {i} = {number * i}");
+        }
+    }
+}
+// Program 5: Add two numbers. If same, return triple the sum
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter first number: ");
+        int num1 = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter second number: ");
+        int num2 = Convert.ToInt32(Console.ReadLine());
+
+        int sum = num1 + num2;
+
+        if (num1 == num2)
+        {
+            Console.WriteLine($"Both numbers are the same. Triple of their sum is: {sum * 3}");
+        }
+        else
+        {
+            Console.WriteLine($"Sum of the numbers is: {sum}");
+        }
+    }
+}
+// Program 1: Swap two numbers
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter first number: ");
+        int a = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Enter second number: ");
+        int b = Convert.ToInt32(Console.ReadLine());
+
+        // Swapping
+        int temp = a;
+        a = b;
+        b = temp;
+
+        Console.WriteLine($"After swapping: First = {a}, Second = {b}");
+    }
+}
+// Program 2: Display a number four times with spaces and without using {0}
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter a digit: ");
+        string num = Console.ReadLine();
+
+        Console.WriteLine("{0} {0} {0} {0}", num);
+        Console.WriteLine("{0}{0}{0}{0}", num);
+        Console.WriteLine("{0} {0} {0} {0}", num);
+        Console.WriteLine("{0}{0}{0}{0}", num);
+    }
+}
+
+// Program 3: Display day name from day number (1-7)
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter day number (1-7): ");
+        int day = Convert.ToInt32(Console.ReadLine());
+
+        switch (day)
+        {
+            case 1:
+                Console.WriteLine("Monday"); break;
+            case 2:
+                Console.WriteLine("Tuesday"); break;
+            case 3:
+                Console.WriteLine("Wednesday"); break;
+            case 4:
+                Console.WriteLine("Thursday"); break;
+            case 5:
+                Console.WriteLine("Friday"); break;
+            case 6:
+                Console.WriteLine("Saturday"); break;
+            case 7:
+                Console.WriteLine("Sunday"); break;
+            default:
+                Console.WriteLine("Invalid day number"); break;
+        }
+    }
+}
+
+// Arrays Program 1: Average, Min, Max of array elements
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[] numbers = { 10, 20, 30, 40, 50 };
+        int sum = 0, min = numbers[0], max = numbers[0];
+
+        foreach (int num in numbers)
+        {
+            sum += num;
+            if (num < min) min = num;
+            if (num > max) max = num;
+        }
+
+        double average = (double)sum / numbers.Length;
+
+        Console.WriteLine($"Average: {average}");
+        Console.WriteLine($"Minimum: {min}");
+        Console.WriteLine($"Maximum: {max}");
+    }
+}
+// Arrays Program 2: Accept 10 marks and show total, average, min, max, sorted order
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[] marks = new int[10];
+        int sum = 0;
+
+        Console.WriteLine("Enter 10 marks:");
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Mark {i + 1}: ");
+            marks[i] = Convert.ToInt32(Console.ReadLine());
+            sum += marks[i];
+        }
+
+        double avg = sum / 10.0;
+        int min = marks[0], max = marks[0];
+
+        for (int i = 1; i < 10; i++)
+        {
+            if (marks[i] < min) min = marks[i];
+            if (marks[i] > max) max = marks[i];
+        }
+
+        // Ascending sort (manual bubble sort)
+        for (int i = 0; i < marks.Length - 1; i++)
+        {
+            for (int j = i + 1; j < marks.Length; j++)
+            {
+                if (marks[i] > marks[j])
+                {
+                    int temp = marks[i];
+                    marks[i] = marks[j];
+                    marks[j] = temp;
+                }
+            }
+        }
+
+        Console.WriteLine($"\nTotal: {sum}");
+        Console.WriteLine($"Average: {avg}");
+        Console.WriteLine($"Minimum: {min}");
+        Console.WriteLine($"Maximum: {max}");
+
+        Console.WriteLine("Marks in Ascending Order:");
+        foreach (int mark in marks) Console.Write(mark + " ");
+        Console.WriteLine();
+
+        Console.WriteLine("Marks in Descending Order:");
+        for (int i = marks.Length - 1; i >= 0; i--) Console.Write(marks[i] + " ");
+    }
+}
+
+// Arrays Program 3: Copy one array to another (without built-in functions)
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[] original = new int[] { 1, 2, 3, 4, 5 };
+        int[] copy = new int[original.Length];
+
+        for (int i = 0; i < original.Length; i++)
+        {
+            copy[i] = original[i];
+        }
+
+        Console.WriteLine("Copied Array:");
+        foreach (int item in copy)
+        {
+            Console.Write(item + " ");
+        }
+    }
+}
+// Strings Program 1: Display length of a word
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter a word: ");
+        string word = Console.ReadLine();
+        Console.WriteLine($"Length of the word: {word.Length}");
+    }
+}
+// Strings Program 2: Display reverse of a word
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter a word: ");
+        string word = Console.ReadLine();
+        char[] chars = word.ToCharArray();
+        Array.Reverse(chars);
+        string reversed = new string(chars);
+        Console.WriteLine($"Reversed word: {reversed}");
+    }
+}
+// Strings Program 3: Compare two words
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Enter first word: ");
+        string word1 = Console.ReadLine();
+
+        Console.Write("Enter second word: ");
+        string word2 = Console.ReadLine();
+
+        if (word1.Equals(word2, StringComparison.OrdinalIgnoreCase))
+            Console.WriteLine("Both words are same.");
+        else
+            Console.WriteLine("Words are different.");
+    }
+}
+// Inheritance Program: Student result and data display
+
+using System;
+
+class Student
+{
+    int rollNo;
+    string name;
+    string className;
+    string semester;
+    string branch;
+    int[] marks = new int[5];
+
+    public Student(int rollNo, string name, string className, string semester, string branch)
+    {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.className = className;
+        this.semester = semester;
+        this.branch = branch;
+    }
+
+    public void GetMarks()
+    {
+        Console.WriteLine("Enter marks for 5 subjects:");
+        for (int i = 0; i < 5; i++)
+        {
+            Console.Write($"Subject {i + 1}: ");
+            marks[i] = Convert.ToInt32(Console.ReadLine());
+        }
+    }
+
+    public void DisplayResult()
+    {
+        bool isFailed = false;
+        int sum = 0;
+
+        foreach (int mark in marks)
+        {
+            if (mark < 35)
+            {
+                isFailed = true;
+                break;
+            }
+            sum += mark;
+        }
+
+        double avg = sum / 5.0;
+
+        if (isFailed || avg < 50)
+            Console.WriteLine("Result: Failed");
+        else
+            Console.WriteLine("Result: Passed");
+    }
+
+    public void DisplayData()
+    {
+        Console.WriteLine($"\nStudent Details:");
+        Console.WriteLine($"Roll No: {rollNo}");
+        Console.WriteLine($"Name: {name}");
+        Console.WriteLine($"Class: {className}");
+        Console.WriteLine($"Semester: {semester}");
+        Console.WriteLine($"Branch: {branch}");
+
+        Console.Write("Marks: ");
+        foreach (int mark in marks)
+            Console.Write(mark + " ");
+        Console.WriteLine();
+    }
+}
+
+// Interface Program: IStudent, DayScholar and Resident
+
+using System;
+
+interface IStudent
+{
+    int StudentId { get; set; }
+    string Name { get; set; }
+    double Fees { get; set; }
+
+    void ShowDetails();
+}
+
+class DayScholar : IStudent
+{
+    public int StudentId { get; set; }
+    public string Name { get; set; }
+    public double Fees { get; set; }
+
+    public void ShowDetails()
+    {
+        Console.WriteLine($"DayScholar -> ID: {StudentId}, Name: {Name}, Fees: {Fees}");
+    }
+}
+
+class Resident : IStudent
+{
+    public int StudentId { get; set; }
+    public string Name { get; set; }
+    public double Fees { get; set; }
+    public double AccommodationFee { get; set; }
+
+    public void ShowDetails()
+    {
+        Console.WriteLine($"Resident -> ID: {StudentId}, Name: {Name}, Fees: {Fees + AccommodationFee}");
+    }
+}
+// Custom Exception: Insufficient Funds for ABC Bank transfer
+
+using System;
+
+class InsufficientFundsException : Exception
+{
+    public InsufficientFundsException(string message) : base(message) { }
+}
+
+class BankAccount
+{
+    public string AccountHolder { get; set; }
+    public double Balance { get; set; }
+
+    public BankAccount(string name, double balance)
+    {
+        AccountHolder = name;
+        Balance = balance;
+    }
+
+    public void Transfer(double amount)
+    {
+        if (amount > Balance)
+            throw new InsufficientFundsException("Transfer failed: Insufficient balance.");
+
+        Balance -= amount;
+        Console.WriteLine($"Transfer of {amount} successful. Remaining balance: {Balance}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        BankAccount acc = new BankAccount("John Doe", 5000);
+
+        try
+        {
+            Console.Write("Enter amount to transfer: ");
+            double amt = Convert.ToDouble(Console.ReadLine());
+            acc.Transfer(amt);
+        }
+        catch (InsufficientFundsException ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+}
+
