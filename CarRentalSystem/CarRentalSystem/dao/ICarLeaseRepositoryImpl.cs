@@ -150,9 +150,6 @@ namespace CarRentalSystem.dao
         }
 
 
-
-        // --- Customer Management ---
-
         public void AddCustomer(Customer customer)
         {
             using (SqlConnection conn = new SqlConnection(DBConnection.GetConnectionString()))
@@ -243,14 +240,12 @@ namespace CarRentalSystem.dao
             {
                 conn.Open();
 
-                // Query to check if the car exists and if it is available
                 string checkCarQuery = "SELECT Status FROM Vehicle WHERE VehicleID = @carID";
                 string insertLeaseQuery = @"INSERT INTO Lease (CustomerID, VehicleID, StartDate, EndDate, Type)
                                     VALUES (@customerID, @carID, @startDate, @endDate, @Type); 
                                     SELECT SCOPE_IDENTITY();"; // Returns the LeaseID
                 string updateVehicleStatus = "UPDATE Vehicle SET Status = 'notAvailable' WHERE VehicleID = @carID";
 
-                // Check the availability of the car
                 using (SqlCommand checkCmd = new SqlCommand(checkCarQuery, conn))
                 {
                     checkCmd.Parameters.AddWithValue("@carID", carID);
@@ -271,7 +266,6 @@ namespace CarRentalSystem.dao
                     }
                 }
 
-                // Insert the lease into the Lease table
                 int leaseID = 0;  // Initialize leaseID to store the newly generated ID
                 using (SqlCommand insertCmd = new SqlCommand(insertLeaseQuery, conn))
                 {
@@ -281,19 +275,16 @@ namespace CarRentalSystem.dao
                     insertCmd.Parameters.AddWithValue("@endDate", endDate);
                     insertCmd.Parameters.AddWithValue("@Type", type); // Include the leaseType
 
-                    // Get the LeaseID of the newly created lease
                     leaseID = Convert.ToInt32(insertCmd.ExecuteScalar());
                 }
 
-                // Update the car's status to 'notAvailable' when it is leased
                 using (SqlCommand updateCmd = new SqlCommand(updateVehicleStatus, conn))
                 {
                     updateCmd.Parameters.AddWithValue("@carID", carID);
                     updateCmd.ExecuteNonQuery();
                 }
 
-                // Return the created lease object (including Type)
-                return new Lease(leaseID, customerID, carID, startDate, endDate, type); // Include the leaseType
+                return new Lease(leaseID, customerID, carID, startDate, endDate, type); 
             }
         }
 
@@ -305,7 +296,6 @@ namespace CarRentalSystem.dao
             {
                 conn.Open();
 
-                // Modify the query to find active leases based on endDate
                 string query = "SELECT * FROM Lease WHERE EndDate >= GETDATE() AND VehicleID IN (SELECT VehicleID FROM Vehicle WHERE Status = 'notAvailable')";
 
                 List<Lease> activeLeases = new List<Lease>();
@@ -367,7 +357,6 @@ namespace CarRentalSystem.dao
             {
                 conn.Open();
 
-                // Step 1: Delete the lease from the database
                 string deleteQuery = "DELETE FROM Lease WHERE LeaseID = @LeaseID";
 
                 using (SqlCommand cmd = new SqlCommand(deleteQuery, conn))
@@ -381,7 +370,6 @@ namespace CarRentalSystem.dao
                     }
                 }
 
-                // Step 2: Update vehicle status to 'Available'
                 string updateVehicleStatusQuery = @"
             UPDATE Vehicle
             SET Status = 'Available'
@@ -406,8 +394,7 @@ namespace CarRentalSystem.dao
             {
                 conn.Open();
 
-                // First, check if the lease is active and can be returned
-         // Get EndDate
+         
 string checkLeaseStatusQuery = "SELECT EndDate FROM Lease WHERE LeaseID = @LeaseID";
 using (SqlCommand cmdCheckLeaseStatus = new SqlCommand(checkLeaseStatusQuery, conn))
 {
@@ -424,7 +411,6 @@ using (SqlCommand cmdCheckLeaseStatus = new SqlCommand(checkLeaseStatusQuery, co
         }
     }
 }
-                // Second, update the Vehicle's status to 'Available'
                 string updateVehicleQuery = @"
         UPDATE v
         SET v.Status = 'Available'
@@ -435,11 +421,9 @@ using (SqlCommand cmdCheckLeaseStatus = new SqlCommand(checkLeaseStatusQuery, co
                 using (SqlCommand cmdUpdateVehicle = new SqlCommand(updateVehicleQuery, conn))
                 {
                     cmdUpdateVehicle.Parameters.AddWithValue("@LeaseID", leaseID);
-                    cmdUpdateVehicle.ExecuteNonQuery(); // Execute the update query
+                    cmdUpdateVehicle.ExecuteNonQuery(); 
                 }
 
-                // Third, update the Lease end date to current date
-                // Ensure that the EndDate is logically valid per business rule
                 string updateLeaseQuery = @"
         UPDATE Lease
         SET EndDate = GETDATE()  -- Set the current date as the end date for the lease
@@ -456,7 +440,7 @@ using (SqlCommand cmdCheckLeaseStatus = new SqlCommand(checkLeaseStatusQuery, co
                     }
                 }
 
-                // Finally, retrieve the updated Lease
+               
                 string selectLeaseQuery = @"
         SELECT l.LeaseID, l.CustomerID, l.VehicleID, l.StartDate, l.EndDate, l.Type
         FROM Lease l
@@ -477,7 +461,7 @@ using (SqlCommand cmdCheckLeaseStatus = new SqlCommand(checkLeaseStatusQuery, co
                             DateTime endDate = Convert.ToDateTime(reader["EndDate"]);
                             string type = reader["Type"].ToString();
 
-                            // Return the updated lease object
+                          
                             return new Lease(leaseIDResult, customerID, vehicleID, startDate, endDate, type);
                         }
                         else
