@@ -116,7 +116,7 @@ namespace CarRentalSystem
                             DateTime startDate = ReadDate("Enter Lease Start Date (yyyy-MM-dd): ");
                             DateTime endDate = ReadDate("Enter Lease End Date (yyyy-MM-dd): ");
 
-                            // Ensure the type entered is valid
+                          
                             string type = ReadString("Enter Lease Type (DailyLease or MonthlyLease): ").Trim();
                             if (type != "DailyLease" && type != "MonthlyLease")
                             {
@@ -124,7 +124,6 @@ namespace CarRentalSystem
                                 break; // Exit the current case if the type is invalid
                             }
 
-                            // Create the lease with the valid type
                             Lease lease = repository.CreateLease(custId, vehicleId, startDate, endDate, type);
                             Console.WriteLine($"Lease created with ID: {lease.LeaseID}");
                             break;
@@ -161,7 +160,7 @@ namespace CarRentalSystem
                             Console.WriteLine("Invalid choice. Please try again.");
                             break;
                         case 11:
-                            AddPayment(repository);  // pass the repository instance
+                            AddPayment(repository);  
                             break;
 
                     }
