@@ -2,7 +2,6 @@
 using CarRentalSystem.entity;
 using CarRentalSystem.dao;
 using System.Collections.Generic;
-  // Adjust to the correct namespace
 
 
 namespace CarRentalSystem
